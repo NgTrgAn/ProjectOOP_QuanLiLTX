@@ -2,6 +2,7 @@
 #include "SinhVien.h"
 #include "HoaDon.h"
 #include <iostream>
+#include "iomanip"
 #include <string>
 #include <cstring>
 #include <regex> 
@@ -17,9 +18,11 @@ void taophong(Phong* phong, int& n);
 
 void themphong(Phong* phong, int& n);
 
-void xuatDSphong(Phong* phong, int n);
+void xuatDSphong(Phong* phong, int n);	
 
 void themSinhVien(SinhVien* sv, const Phong* phong, const int& n);
+
+void xuatDSsinhvien(SinhVien* sv,int& m);
 
 SinhVien timSinhVien(const SinhVien* sv, string masv, const int& m);
 void taohoadon(HoaDon* hd,Phong& phong);
@@ -31,8 +34,8 @@ int main() {
 	Phong* phong = new Phong[1000];
 	SinhVien* sv = new SinhVien[1000];
 	HoaDon* hd = new HoaDon[1000];
-	int n;
-	int m;
+	int n = 0;
+	int m = 0;
 	int dem=0;
 	taophong(phong, n);
 	int chon;
@@ -43,8 +46,10 @@ int main() {
 		cout << "** 2. Xuat danh sach phong\t\t**\n";
 		cout << "** 3. Them phong\t\t\t**\n";
 		cout << "** 4. Them sinh vien\t\t\t**\n";
-		cout << "** 5. Them hoa don\t\t\t**\n";
-		cout << "** 6. Xuat hoa don\t\t\t**\n";
+		cout << "** 5. Xuat danh sach sinh vien\t\t**\n";
+		cout << "** 6. Them sinh vien\t\t\t**\n";
+		cout << "** 7. Them hoa don\t\t\t**\n";
+		cout << "** 8. Xuat hoa don\t\t\t**\n";
 		cout << "** 0. Thoat\t\t\t\t**\n";
 		cout << "******************************************\n";
 		cin >> chon;
@@ -65,7 +70,7 @@ int main() {
 					phong[i].songuoihientai++;
 				}
 			}
-		}else if(chon == 5) {
+		}else if(chon == 7) {
 			string tp;
 			cout << "Nhap ma phong:";
 			cin >> tp;
@@ -76,10 +81,13 @@ int main() {
 				}
 			}
 		}
-		else if (chon == 6) {
+		else if (chon == 8) {
 			for(int i=0;i<dem;i++){
 				xuathd(hd[i]);
 			}
+		}
+		else if(chon = 5) {
+			xuatDSsinhvien(sv,m);
 		}
 		else if (chon == 0) {
 			break;
@@ -196,6 +204,17 @@ void themphong(Phong* phong, int& n) {
 		}
 	}
 
+}
+
+void xuatDSsinhvien(SinhVien* sv,int& m) {
+	if (m == 0) {
+		cout << "\nNhap sinh vien!";
+		return;
+	}
+	cout << "\nMSSV"<<setw(25)<<"Ho Ten"<<setw(30)<<"Gioi Tinh"<<setw(15)<<"Que Quan"<<setw(30)<<"Email"<<setw(30)<<"Ten Phong\n";
+	for (int i = 0; i < m; i++) {
+		sv[i].xuatsinhvien();
+	}
 }
 
 void timVaSua(Phong* phong, int& n) {

@@ -1,5 +1,6 @@
 #pragma once
 #include "Phong.h"
+#include "iomanip"
 #include <string>
 
 class SinhVien :
@@ -59,11 +60,12 @@ void SinhVien::xoasv()
 
 void SinhVien::xuatsinhvien()
 {	
-	cout << "MSSV: " << mssv << endl;
-	cout << "Ho ten: " << hoten << endl;
-	cout << "Gioi tinh: ";
-	cout << (gioitinh == 1 ? "Nam" : "Nu") << endl;
-	cout << "Que quan: " << quequan << endl;
-	cout << "Email: " << email << endl;
-	cout << "Ten phong: " << tenphong << endl;
+	cout <<mssv<<setw(15)<<hoten<<setw(30)<<(gioitinh == 1 ? "Nam" : "Nu")<<setw(15)<<quequan<<setw(30)<<email<<setw(30)<<tenphong << endl;
+	// cout << "MSSV: " << mssv << endl;
+	// cout << "Ho ten: " << hoten << endl;
+	// cout << "Gioi tinh: ";
+	// cout << (gioitinh == 1 ? "Nam" : "Nu") << endl;
+	// cout << "Que quan: " << quequan << endl;
+	// cout << "Email: " << email << endl;
+	// cout << "Ten phong: " << tenphong << endl;
 }
