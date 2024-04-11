@@ -17,7 +17,7 @@ void taophong(Phong* phong, int& n);
 
 void themphong(Phong* phong, int& n);
 
-void xuatphong(Phong* phong, int n);
+void xuatDSphong(Phong* phong, int n);
 
 void themSinhVien(SinhVien* sv, const Phong* phong, const int& n);
 
@@ -37,22 +37,22 @@ int main() {
 	taophong(phong, n);
 	int chon;
 	do {
-		cout << "*******************************************\n";
+		cout << "\n\n******************************************\n";
 		cout << "** Ban muon lam gi?\t\t\t**\n";
 		cout << "** 1. Tim va sua phong\t\t\t**\n";
-		cout << "** 2. Xuat thong tin phong\t\t**\n";
+		cout << "** 2. Xuat danh sach phong\t\t**\n";
 		cout << "** 3. Them phong\t\t\t**\n";
 		cout << "** 4. Them sinh vien\t\t\t**\n";
 		cout << "** 5. Them hoa don\t\t\t**\n";
 		cout << "** 6. Xuat hoa don\t\t\t**\n";
 		cout << "** 0. Thoat\t\t\t\t**\n";
-		cout << "*******************************************";
+		cout << "******************************************\n";
 		cin >> chon;
 		if (chon == 1) {
 			timVaSua(phong, n);
 		}
 		else if (chon == 2) {
-			xuatphong(phong, n);
+			xuatDSphong(phong, n);
 		}
 		else if (chon == 3) {
 			themphong(phong, n);
@@ -117,47 +117,50 @@ bool xacminhtenphong(const string& tenphong, const Phong* phong, const int& n) {
 }
 
 void themSinhVien(SinhVien* sv, const Phong* phong, const int& n) {
-	string tensv;
-	string masv;
-	bool gioitinh;
-	string quequan;
-	string email;
-	string tenphong;
-	
-	do {
-		cout << "Nhap ten sinh vien: ";
-		cin.ignore();
-    	getline(cin, tensv);
-		//cin >> tensv;
-	} while (tensv == "");
-	do {
-		cout << "Nhap ma sinh vien: ";
-		cin >> masv;
-	} while (masv == "");
-	do {
-		cout << "Nhap gioi tinh:(nam, nu) ";
-		string gt;
-		cin >> gt;
-		gioitinh = gt == "nam" ? true : false;
-	} while (gioitinh != true && gioitinh != false);
-	do {
-		cout << "Nhap que quan: ";
-		cin >> quequan;
-	} while (quequan == "");
-	do {
-		cout << "Nhap email: ";
-		cin >> email;
-	} while (!xacminhemail(email));
-	do {
-		cout << "Nhap ten phong: ";
-		cin >> tenphong;
-	} while (!xacminhtenphong(tenphong, phong, n));
-	sv->themsv(masv, tensv, gioitinh, quequan, email);
-	sv->suasv(masv, tensv, gioitinh, quequan, email, tenphong);
-	sv->xuatsinhvien();
+	for (int i = 0; i < n; i++) {
+		string tensv;
+		string masv;
+		bool gioitinh;
+		string quequan;
+		string email;
+		string tenphong;
+		do {
+			cout << "Nhap ten sinh vien: ";
+			cin.ignore();
+			getline(cin, tensv);
+			//cin >> tensv;
+		} while (tensv == "");
+		do {
+			cout << "Nhap ma sinh vien: ";
+			cin >> masv;
+		} while (masv == "");
+		do {
+			cout << "Nhap gioi tinh:(nam, nu) ";
+			string gt;
+			cin >> gt;
+			gioitinh = gt == "nam" ? true : false;
+		} while (gioitinh != true && gioitinh != false);
+		do {
+			cout << "Nhap que quan: ";
+			cin >> quequan;
+		} while (quequan == "");
+		do {
+			cout << "Nhap email: ";
+			cin >> email;
+		} while (!xacminhemail(email));
+		do {
+			cout << "Nhap ten phong: ";
+			cin >> tenphong;
+		} while (!xacminhtenphong(tenphong, phong, n));
+
+		sv[i].themsv(masv, tensv, gioitinh, quequan, email);
+		sv[i].suasv(masv, tensv, gioitinh, quequan, email, tenphong);
+		// sv[i].xuatsinhvien();
+	}
 }
 
-void xuatphong(Phong* phong, int n) {
+void xuatDSphong(Phong* phong, int n) {
+	cout << "\nTen Phong\tLoai Phong\tSo Nguoi Toi Da\tSo Nguoi Hien Tai\n";
 	for (int i = 0; i < n; i++) {
 		phong[i].xuathongtinphong();
 	}
@@ -254,6 +257,7 @@ void suaphong(Phong& phong) {
 			cin >> tenphong;
 			phong.suaphong(tenphong, phong.loaiphong, phong.songuoitoida, phong.songuoihientai);
 			cout << "Da sua ten phong thanh cong\n";
+			cout << "\nTen Phong\tLoai Phong\tSo Nguoi Toi Da\tSo Nguoi Hien Tai\n";
 			phong.xuathongtinphong();
 		}
 		else if (chon == 2) {
@@ -326,6 +330,7 @@ void taohoadon(HoaDon* hd,Phong& phong){
 		cout<<"sai phong!";
 	}
 }
+
 void xuathd(HoaDon& hd){
 	if(hd.mahoadon=="0"){
 		cout<<"khong co hoa don!";

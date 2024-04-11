@@ -61,8 +61,9 @@ void Phong::suaphong(string tenphong, string loaiphong, int songuoitoida, int so
 
 void Phong::xuathongtinphong()
 {
-	cout << "Ten phong : " << this->tenphong << "\n";
-	cout << "Loai phong : " << this->loaiphong << "\n";
-	cout << "So nguoi toi da : " << this->songuoitoida << "\n";
-	cout << "So nguoi hien tai : " << this->songuoihientai << "\n\n";
+	cout << this->tenphong << "\t\t" << this->loaiphong << "\t\t" << this->songuoitoida << "\t\t" <<this->songuoihientai << endl;
+	// cout << "Ten phong : " << this->tenphong << "\n";
+	// cout << "Loai phong : " << this->loaiphong << "\n";
+	// cout << "So nguoi toi da : " << this->songuoitoida << "\n";
+	// cout << "So nguoi hien tai : " << this->songuoihientai << "\n\n";
 }
